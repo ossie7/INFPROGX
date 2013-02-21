@@ -14,6 +14,7 @@ namespace INFPROGX.Models
         public int OrderId { get; set; }
         [ForeignKey("UserId")]
         public int UserId { get; set; }
+        public DateTime Date { get; set; }
     }
 
 
@@ -24,6 +25,19 @@ namespace INFPROGX.Models
         [ForeignKey("OrderId")]
         public int OrderId { get; set; }
         public string ProductId { get; set; }
+        public float PrinceOnOrder { get; set; }
+        public int Amount { get; set; }
+    }
+
+    public class Shipping
+    {
+        [Key]
+        public int ShippingId { get; set; }
+        [ForeignKey("OrderId")]
+        public int OrderId { get; set; }
+        public DateTime Date { get; set; }
+        public float Cost { get; set; }
+        public string Type { get; set; }
     }
 
     public class AbstractProduct
@@ -59,29 +73,24 @@ namespace INFPROGX.Models
         public int Size { get; set; }
     }
 
-    public class CPU : AbstractProduct
+    public class Cpu : AbstractProduct
     {
         public float Clock { get; set; }
     }
 
-    public class BankAccount
-    {
-        [Key]
-        public int BankAccountId { get; set; }
-        [ForeignKey("UserId")]
-        public int UserId { get; set; }
-        public float Balance { get; set; }
-        public int AccessCode { get; set; }
-    }
-
-    public class OrderDBContext : DbContext
+    public class OrderDbContext : DbContext
     {
         public DbSet<Order> Order { get; set; }
     }
 
-    public class OrderDataDBContext : DbContext
+    public class OrderDataDbContext : DbContext
     {
         public DbSet<OrderData> OrderData { get; set; }
+    }
+
+    public class ShippingDbContext : DbContext
+    {
+        public DbSet<Shipping> Shipping { get; set; }
     }
 
     public class PowerSupplyDBContext : DbContext
@@ -89,37 +98,29 @@ namespace INFPROGX.Models
         public DbSet<PowerSupply> PowerSupply { get; set; }
     }
 
-    public class CaseDBContext : DbContext
+    public class CaseDbContext : DbContext
     {
         public DbSet<Case> Case { get; set; }
     }
 
-    public class MoboDBContext : DbContext
+    public class MoboDbContext : DbContext
     {
         public DbSet<Mobo> Mobo { get; set; }
     }
 
-    public class RAMDBContext : DbContext
+    public class RamDbContext : DbContext
     {
         public DbSet<Ram> Ram { get; set; }
     }
 
-    public class HarddiskDBContext : DbContext
+    public class HarddiskDbContext : DbContext
     {
         public DbSet<Harddisk> Harddisk { get; set; }
     }
 
-    public class CPUDBContext : DbContext
+    public class CpuDbContext : DbContext
     {
-        public DbSet<CPU> CPU { get; set; }
+        public DbSet<Cpu> Cpu { get; set; }
     }
-
-    public class BankAccountDBContext : DbContext
-    {
-        public DbSet<BankAccount> BankAccount { get; set; }
-    }
-
-
-
 
 }
