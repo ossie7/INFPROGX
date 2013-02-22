@@ -12,7 +12,6 @@ namespace INFPROGX.Models
     {
         [Key]
         public int OrderId { get; set; }
-        [ForeignKey("UserId")]
         public int UserId { get; set; }
         public DateTime Date { get; set; }
     }
@@ -22,7 +21,6 @@ namespace INFPROGX.Models
     {
         [Key]
         public int OrderDataId { get; set; }
-        [ForeignKey("OrderId")]
         public int OrderId { get; set; }
         public string ProductId { get; set; }
         public float PrinceOnOrder { get; set; }
@@ -33,7 +31,6 @@ namespace INFPROGX.Models
     {
         [Key]
         public int ShippingId { get; set; }
-        [ForeignKey("OrderId")]
         public int OrderId { get; set; }
         public DateTime Date { get; set; }
         public float Cost { get; set; }
@@ -44,6 +41,7 @@ namespace INFPROGX.Models
     {
         [Key]
         public int ProductId { get; set; }
+        public string Name { get; set; }
         public float Price { get; set; }
         public string Description { get; set; }
     }
@@ -78,47 +76,52 @@ namespace INFPROGX.Models
         public float Clock { get; set; }
     }
 
-    public class OrderDbContext : DbContext
+    public class DefaultDbContext : DbContext
+    {
+        public DefaultDbContext() : base("DefaultConnection") { }
+    }
+
+    public class OrderDbContext : DefaultDbContext
     {
         public DbSet<Order> Order { get; set; }
     }
 
-    public class OrderDataDbContext : DbContext
+    public class OrderDataDbContext : DefaultDbContext
     {
         public DbSet<OrderData> OrderData { get; set; }
     }
 
-    public class ShippingDbContext : DbContext
+    public class ShippingDbContext : DefaultDbContext
     {
         public DbSet<Shipping> Shipping { get; set; }
     }
 
-    public class PowerSupplyDBContext : DbContext
+    public class PowerSupplyDBContext : DefaultDbContext
     {
         public DbSet<PowerSupply> PowerSupply { get; set; }
     }
 
-    public class CaseDbContext : DbContext
+    public class CaseDbContext : DefaultDbContext
     {
         public DbSet<Case> Case { get; set; }
     }
 
-    public class MoboDbContext : DbContext
+    public class MoboDbContext : DefaultDbContext
     {
         public DbSet<Mobo> Mobo { get; set; }
     }
 
-    public class RamDbContext : DbContext
+    public class RamDbContext : DefaultDbContext
     {
         public DbSet<Ram> Ram { get; set; }
     }
 
-    public class HarddiskDbContext : DbContext
+    public class HarddiskDbContext : DefaultDbContext
     {
         public DbSet<Harddisk> Harddisk { get; set; }
     }
 
-    public class CpuDbContext : DbContext
+    public class CpuDbContext : DefaultDbContext
     {
         public DbSet<Cpu> Cpu { get; set; }
     }
