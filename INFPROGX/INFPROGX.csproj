@@ -175,6 +175,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\DataModel.cs" />
+    <Compile Include="Models\Ordernew.cs" />
+    <Compile Include="Models\Shippingnew.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
