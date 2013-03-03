@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class CpuController : Controller
     {
-        private CpuDbContext db = new CpuDbContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /Cpu/

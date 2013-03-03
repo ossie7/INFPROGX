@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class RamController : Controller
     {
-        private RamDbContext db = new RamDbContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /Ram/

@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class PowerSupplyController : Controller
     {
-        private PowerSupplyDBContext db = new PowerSupplyDBContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /PowerSupply/

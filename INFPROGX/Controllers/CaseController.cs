@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class CaseController : Controller
     {
-        private CaseDbContext db = new CaseDbContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /Case/

@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class MoboController : Controller
     {
-        private MoboDbContext db = new MoboDbContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /Mobo/

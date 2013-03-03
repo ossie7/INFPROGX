@@ -11,7 +11,7 @@ namespace INFPROGX.Controllers
 {
     public class HarddiskController : Controller
     {
-        private HarddiskDbContext db = new HarddiskDbContext();
+        private ShopDbContext db = new ShopDbContext();
 
         //
         // GET: /Harddisk/
