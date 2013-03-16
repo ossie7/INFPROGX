@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.PowerSupply.ToList());
+            return View(db.Product.ToList().OfType<PowerSupply>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            PowerSupply powersupply = db.PowerSupply.Find(id);
+            PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
             if (powersupply == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PowerSupply.Add(powersupply);
+                db.Product.Add(powersupply);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            PowerSupply powersupply = db.PowerSupply.Find(id);
+            PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
             if (powersupply == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            PowerSupply powersupply = db.PowerSupply.Find(id);
+            PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
             if (powersupply == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            PowerSupply powersupply = db.PowerSupply.Find(id);
-            db.PowerSupply.Remove(powersupply);
+            PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
+            db.Product.Remove(powersupply);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

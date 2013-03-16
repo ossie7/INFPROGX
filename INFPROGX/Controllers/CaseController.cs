@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Case.ToList());
+            return View(db.Product.ToList().OfType<Case>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Case Case = db.Case.Find(id);
+            Case Case = (Case)db.Product.Find(id);
             if (Case == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Case.Add(Case);
+                db.Product.Add(Case);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Case Case = db.Case.Find(id);
+            Case Case = (Case)db.Product.Find(id);
             if (Case == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Case Case = db.Case.Find(id);
+            Case Case = (Case)db.Product.Find(id);
             if (Case == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Case Case = db.Case.Find(id);
-            db.Case.Remove(Case);
+            Case Case = (Case)db.Product.Find(id);
+            db.Product.Remove(Case);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

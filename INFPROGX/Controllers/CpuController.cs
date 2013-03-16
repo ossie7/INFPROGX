@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Cpu.ToList());
+            return View(db.Product.ToList().OfType<Cpu>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Cpu cpu = db.Cpu.Find(id);
+            Cpu cpu = (Cpu)db.Product.Find(id);
             if (cpu == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Cpu.Add(cpu);
+                db.Product.Add(cpu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Cpu cpu = db.Cpu.Find(id);
+            Cpu cpu = (Cpu)db.Product.Find(id);
             if (cpu == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Cpu cpu = db.Cpu.Find(id);
+            Cpu cpu = (Cpu)db.Product.Find(id);
             if (cpu == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Cpu cpu = db.Cpu.Find(id);
-            db.Cpu.Remove(cpu);
+            Cpu cpu = (Cpu)db.Product.Find(id);
+            db.Product.Remove(cpu);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

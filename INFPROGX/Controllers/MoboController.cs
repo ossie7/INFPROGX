@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Mobo.ToList());
+            return View(db.Product.ToList().OfType<Mobo>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Mobo mobo = db.Mobo.Find(id);
+            Mobo mobo = (Mobo)db.Product.Find(id);
             if (mobo == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Mobo.Add(mobo);
+                db.Product.Add(mobo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Mobo mobo = db.Mobo.Find(id);
+            Mobo mobo = (Mobo)db.Product.Find(id);
             if (mobo == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Mobo mobo = db.Mobo.Find(id);
+            Mobo mobo = (Mobo)db.Product.Find(id);
             if (mobo == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Mobo mobo = db.Mobo.Find(id);
-            db.Mobo.Remove(mobo);
+            Mobo mobo = (Mobo)db.Product.Find(id);
+            db.Product.Remove(mobo);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Harddisk.ToList());
+            return View(db.Product.ToList().OfType<Harddisk>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Harddisk harddisk = db.Harddisk.Find(id);
+            Harddisk harddisk = (Harddisk)db.Product.Find(id);
             if (harddisk == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Harddisk.Add(harddisk);
+                db.Product.Add(harddisk);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Harddisk harddisk = db.Harddisk.Find(id);
+            Harddisk harddisk = (Harddisk)db.Product.Find(id);
             if (harddisk == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Harddisk harddisk = db.Harddisk.Find(id);
+            Harddisk harddisk = (Harddisk)db.Product.Find(id);
             if (harddisk == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Harddisk harddisk = db.Harddisk.Find(id);
-            db.Harddisk.Remove(harddisk);
+            Harddisk harddisk = (Harddisk)db.Product.Find(id);
+            db.Product.Remove(harddisk);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

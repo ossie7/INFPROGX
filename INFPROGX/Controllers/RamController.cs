@@ -18,7 +18,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
-            return View(db.Ram.ToList());
+            return View(db.Product.ToList().OfType<Ram>());
         }
 
         //
@@ -26,7 +26,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Ram ram = db.Ram.Find(id);
+            Ram ram = (Ram)db.Product.Find(id);
             if (ram == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Ram.Add(ram);
+                db.Product.Add(ram);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -63,7 +63,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Edit(int id = 0)
         {
-            Ram ram = db.Ram.Find(id);
+            Ram ram = (Ram)db.Product.Find(id);
             if (ram == null)
             {
                 return HttpNotFound();
@@ -91,7 +91,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Delete(int id = 0)
         {
-            Ram ram = db.Ram.Find(id);
+            Ram ram = (Ram)db.Product.Find(id);
             if (ram == null)
             {
                 return HttpNotFound();
@@ -105,8 +105,8 @@ namespace INFPROGX.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            Ram ram = db.Ram.Find(id);
-            db.Ram.Remove(ram);
+            Ram ram = (Ram)db.Product.Find(id);
+            db.Product.Remove(ram);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
