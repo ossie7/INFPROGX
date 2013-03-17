@@ -8,6 +8,6 @@ namespace INFPROGX.Models
 {
     public class Case : AbstractProduct
     {
-        public string Colour { get; set; }
+        public string Height { get; set; }
     }
 }
