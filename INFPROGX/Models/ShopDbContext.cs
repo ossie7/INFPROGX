@@ -12,7 +12,7 @@ namespace INFPROGX.Models
         public ShopDbContext() : base("DefaultConnection") { }
         public DbSet<AbstractProduct> Product   { get; set; }
         public DbSet<Order>           Order     { get; set; }
-        public DbSet<OrderData>       OrderData { get; set; }
+        public DbSet<OrderLine>       OrderData { get; set; }
         public DbSet<Shipping>        Shipping  { get; set; }
     }
 }
