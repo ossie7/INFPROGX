@@ -18,6 +18,8 @@ namespace INFPROGX.Controllers
 
         public ActionResult Index()
         {
+            var product = db.Product.ToList();
+            //return View(product);
             return View(db.Product.ToList().OfType<Ram>());
         }
 
