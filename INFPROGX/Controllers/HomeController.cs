@@ -3,15 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using INFPROGX.ViewModels;
+using INFPROGX.Models;
 
 namespace INFPROGX.Controllers
 {
     public class HomeController : Controller
     {
+        private ShopDbContext db = new ShopDbContext();
+
         public ActionResult Index()
         {
+            TotalProduct model = new TotalProduct();
+            if (Session["total"] != null)
+            {
+                model = (TotalProduct)Session["total"];
+            }
             ViewBag.Message = "Welkom!";
-            return View();
+            
+            //TODO: bereken totalprice
+            model.TotalPrice = 0.0f;
+            return View(model);
+        }
+
+        public ActionResult Add(int id, string type)
+        {
+            TotalProduct model = new TotalProduct();
+            if (Session["total"] != null)
+            {
+                model = (TotalProduct)Session["total"];
+            }
+            switch (type)
+            {
+                case("case"):
+                    model.Case = (Case)db.Product.Find(id); break;
+                case ("cpu"):
+                    model.Cpu = (Cpu)db.Product.Find(id); break;
+                case ("harddisk"):
+                    model.Harddisk = (Harddisk)db.Product.Find(id); break;
+                case ("mobo"):
+                    model.Mobo = (Mobo)db.Product.Find(id); break;
+                case ("powersupply"):
+                    model.PowerSupply = (PowerSupply)db.Product.Find(id); break;
+                case ("ram"):
+                    model.Ram = (Ram)db.Product.Find(id); break;
+            }
+            Session["total"] = model;
+            return RedirectToAction("Index");
         }
 
         public ActionResult About()

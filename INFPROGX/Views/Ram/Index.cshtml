@@ -15,7 +15,6 @@
         <th>
             @Html.DisplayNameFor(model => model.Price)
         </th>
-
         <th></th>
     </tr>
 
@@ -27,6 +26,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Add to PC", "Add", "Home", new { id = item.ProductId, type = "ram" }, null)
         </td>
     </tr>
 }

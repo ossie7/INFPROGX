@@ -1,4 +1,5 @@
-﻿@{
+﻿@model INFPROGX.ViewModels.TotalProduct
+@{
     ViewBag.Title = "Home Page";
 }
 @section featured {
@@ -9,13 +10,28 @@
                 <h2>@ViewBag.Message</h2>
             </hgroup>
             <p>
-                Dit wordt binnenkort een webshop!
-                @Html.ActionLink("Case", "Index", "Case", 1, null )
-                @Html.ActionLink("Cpu", "Index", "Cpu", 1, null )
-                @Html.ActionLink("Harddisk", "Index", "Harddisk", 1, null )
-                @Html.ActionLink("Mobo", "Index", "Mobo", 1, null )
-                @Html.ActionLink("Powersupply", "Index", "PowerSupply", 1, null )
-                @Html.ActionLink("Ram", "Index", "Ram", 1, null )
+                Dit wordt binnenkort een webshop!<br />
+                @Html.ActionLink("Case", "Index", "Case", 1, null)<br />
+                @(Model.Case != null ? "Current: " + Model.Case.Name : "Nothing selected")<br /><br />
+                                                                                   
+                @Html.ActionLink("Cpu", "Index", "Cpu", 1, null)<br />
+                @(Model.Cpu != null ? "Current: " + Model.Cpu.Name : "Nothing selected")<br /><br />
+                                                                                 
+                @Html.ActionLink("Harddisk", "Index", "Harddisk", 1, null)<br />
+                @(Model.Harddisk != null ? "Current: " + Model.Harddisk.Name : "Nothing selected")<br /><br />
+                                                                                           
+                @Html.ActionLink("Mobo", "Index", "Mobo", 1, null)<br />
+                @(Model.Mobo != null ? "Current: " + Model.Mobo.Name : "Nothing selected")<br /><br />
+                                                                                   
+                @Html.ActionLink("Powersupply", "Index", "PowerSupply", 1, null)<br />
+                @(Model.PowerSupply != null ? "Current: " + Model.PowerSupply.Name : "Nothing selected")<br /><br />
+                                                                                                 
+                @Html.ActionLink("Ram", "Index", "Ram", 1, null)<br />
+                @(Model.Ram != null ? "Current: " + Model.Ram.Name : "Nothing selected")<br /><br />
+
+            </p>
+            <p>
+                Current Total Price: @Html.DisplayFor(model => model.TotalPrice)
             </p>
         </div>
     </section>
