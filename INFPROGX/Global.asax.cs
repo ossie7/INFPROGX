@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -16,6 +17,8 @@ namespace INFPROGX
     {
         protected void Application_Start()
         {
+            //for seeding werkt effe uitgeschakeld door tijdelijke db problemen niet mijn schuld:P
+           // Database.SetInitializer(new Models.StoreDbInitializer());
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);
