@@ -10,6 +10,8 @@
 <table>
     <tr>
         <th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
@@ -20,6 +22,12 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @if (item.Image != null)
+            {
+                <img src=@("/Images/Products/"+Url.Content(item.Image)) alt="IMAGES" style="width:100px;height:100px;"/>
+            }
+        </td>
         <td>                           
              @Html.ActionLink(item.Name,"Details", new { id = item.ProductId })
         

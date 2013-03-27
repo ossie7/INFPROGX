@@ -12,6 +12,8 @@
 <table>
     <tr>
         <th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Power)
         </th>
         <th>
@@ -28,6 +30,12 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @if (item.Image != null)
+            {
+                <img src=@("/Images/Products/"+Url.Content(item.Image)) alt="IMAGES" style="width:100px;height:100px;"/>
+            }
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Power)
         </td>
