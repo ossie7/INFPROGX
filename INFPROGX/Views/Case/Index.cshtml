@@ -8,12 +8,13 @@
 
 <p>    
 @if (User.IsInRole("Admin")){
-
     @Html.ActionLink("Create New", "Create")
-        }
+}
 </p>
 <table>
     <tr>
+        <th>
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Height)
         </th>
@@ -31,6 +32,12 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @if (item.Image != null)
+            {
+                <img src=@("/Images/Products/"+Url.Content(item.Image)) alt="IMAGES" style="width:100px;height:100px;"/>
+            }
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Height)
         </td>
