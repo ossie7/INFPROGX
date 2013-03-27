@@ -2,3 +2,5 @@ INFPROGX/bin/
 INFPROGX/obj/
 Thumbs.db
 INFPROGX/Web.config
+INFPROGX/App_Data/ASPNETDB.MDF
+INFPROGX/App_Data/aspnetdb_log.LDF
