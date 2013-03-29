@@ -174,8 +174,9 @@
     <Compile Include="Controllers\MoboController.cs" />
     <Compile Include="Controllers\PowerSupplyController.cs" />
     <Compile Include="Controllers\RamController.cs" />
+    <Compile Include="DataAccessObjects\EFProductData.cs" />
     <Compile Include="DataAccessObjects\OrderData.cs" />
-    <Compile Include="DataAccessObjects\ProductData.cs" />
+    <Compile Include="DataAccessObjects\IProductData.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

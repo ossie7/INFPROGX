@@ -15,5 +15,16 @@ namespace INFPROGX.ViewModels
         public PowerSupply PowerSupply { get; set; }
         public Ram         Ram         { get; set; }
         public float       TotalPrice  { get; set; }
+
+        public List<AbstractProduct> Products()
+        {
+            AbstractProduct[] allProducts = new AbstractProduct[6]{Case, Cpu, Harddisk, Mobo, PowerSupply, Ram};
+            List<AbstractProduct> products = new List<AbstractProduct>();
+            foreach(AbstractProduct product in allProducts)
+            {
+                if (product != null) products.Add(product);
+            }
+            return products;
+        }
     }
 }

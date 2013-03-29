@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using INFPROGX.ViewModels;
 using INFPROGX.Models;
+using INFPROGX.DataAccessObjects;
+using INFPROGX.ServiceAccessObjects;
 
 namespace INFPROGX.Controllers
 {
     public class HomeController : Controller
     {
         private ShopDbContext db = new ShopDbContext();
+        private IProductData productDao = new EFProductData();
 
         public ActionResult Index()
         {
@@ -22,7 +25,7 @@ namespace INFPROGX.Controllers
             ViewBag.Message = "Welkom!";
             
             //TODO: bereken totalprice
-            model.TotalPrice = 0.0f;
+            model.TotalPrice = ProductManager.getTotalPrice(model.Products(), productDao);
             return View(model);
         }
 
