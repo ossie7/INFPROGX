@@ -36,7 +36,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Harddisk/Create
-
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +46,7 @@ namespace INFPROGX.Controllers
         // POST: /Harddisk/Create
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(Harddisk harddisk)
         {
             if (ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Harddisk/Edit/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id = 0)
         {
             Harddisk harddisk = (Harddisk)db.Product.Find(id);
@@ -75,6 +76,7 @@ namespace INFPROGX.Controllers
         // POST: /Harddisk/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(Harddisk harddisk)
         {
             if (ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Harddisk/Delete/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id = 0)
         {
             Harddisk harddisk = (Harddisk)db.Product.Find(id);
@@ -103,6 +105,7 @@ namespace INFPROGX.Controllers
         // POST: /Harddisk/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Harddisk harddisk = (Harddisk)db.Product.Find(id);

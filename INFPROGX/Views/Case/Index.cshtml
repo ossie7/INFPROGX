@@ -15,17 +15,12 @@
     <tr>
         <th>
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Height)
-        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Price)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
         </th>
         <th></th>
     </tr>
@@ -36,27 +31,25 @@
             @if (item.Image != null)
             {
                 <img src=@("/Images/Products/"+Url.Content(item.Image)) alt="IMAGES" style="width:100px;height:100px;"/>
+            } else{
+                <img src=@("/Images/Products/Fill.jpg") alt="IMAGES" style="width:100px;height:100px;"/>
             }
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Height)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
+        <td>                           
+             @Html.ActionLink(item.Name,"Details", new { id = item.ProductId })
+        
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
             @if (User.IsInRole("Admin")){
-
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) 
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) 
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) @Html.Raw("|") }
+            @if (User.IsInRole("Admin")){
+                
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
             }
+            
             @Html.ActionLink("Add to PC", "Add", "Home", new { id = item.ProductId, type = "case" }, null)
         </td>
     </tr>

@@ -36,7 +36,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /PowerSupply/Create
-
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +46,7 @@ namespace INFPROGX.Controllers
         // POST: /PowerSupply/Create
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(PowerSupply powersupply)
         {
             if (ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /PowerSupply/Edit/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id = 0)
         {
             PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
@@ -75,6 +76,7 @@ namespace INFPROGX.Controllers
         // POST: /PowerSupply/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(PowerSupply powersupply)
         {
             if (ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /PowerSupply/Delete/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id = 0)
         {
             PowerSupply powersupply = (PowerSupply)db.Product.Find(id);
@@ -103,6 +105,7 @@ namespace INFPROGX.Controllers
         // POST: /PowerSupply/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             PowerSupply powersupply = (PowerSupply)db.Product.Find(id);

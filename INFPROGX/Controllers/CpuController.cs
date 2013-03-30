@@ -36,7 +36,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Cpu/Create
-
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +46,7 @@ namespace INFPROGX.Controllers
         // POST: /Cpu/Create
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(Cpu cpu)
         {
             if (ModelState.IsValid)
@@ -60,7 +61,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Cpu/Edit/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id = 0)
         {
             Cpu cpu = (Cpu)db.Product.Find(id);
@@ -75,6 +76,7 @@ namespace INFPROGX.Controllers
         // POST: /Cpu/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(Cpu cpu)
         {
             if (ModelState.IsValid)
@@ -88,7 +90,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Cpu/Delete/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id = 0)
         {
             Cpu cpu = (Cpu)db.Product.Find(id);
@@ -103,6 +105,7 @@ namespace INFPROGX.Controllers
         // POST: /Cpu/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Cpu cpu = (Cpu)db.Product.Find(id);

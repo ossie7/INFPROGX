@@ -38,7 +38,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Ram/Create
-
+        [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
@@ -48,6 +48,7 @@ namespace INFPROGX.Controllers
         // POST: /Ram/Create
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Create(Ram ram)
         {
             if (ModelState.IsValid)
@@ -62,7 +63,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Ram/Edit/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(int id = 0)
         {
             Ram ram = (Ram)db.Product.Find(id);
@@ -77,6 +78,7 @@ namespace INFPROGX.Controllers
         // POST: /Ram/Edit/5
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public ActionResult Edit(Ram ram)
         {
             if (ModelState.IsValid)
@@ -90,7 +92,7 @@ namespace INFPROGX.Controllers
 
         //
         // GET: /Ram/Delete/5
-
+        [Authorize(Roles = "admin")]
         public ActionResult Delete(int id = 0)
         {
             Ram ram = (Ram)db.Product.Find(id);
@@ -105,6 +107,7 @@ namespace INFPROGX.Controllers
         // POST: /Ram/Delete/5
 
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "admin")]
         public ActionResult DeleteConfirmed(int id)
         {
             Ram ram = (Ram)db.Product.Find(id);

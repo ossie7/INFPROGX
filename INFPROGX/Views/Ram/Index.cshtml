@@ -5,6 +5,11 @@
 }
 
 <h2>Index</h2>
+ @if (User.IsInRole("Admin")){ 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+ }
 <p>
     Total products: @Model.Count();</p>
 <table>
@@ -26,6 +31,8 @@
             @if (item.Image != null)
             {
                 <img src=@("/Images/Products/"+Url.Content(item.Image)) alt="IMAGES" style="width:100px;height:100px;"/>
+            }else{
+                <img src=@("/Images/Products/Fill.jpg") alt="IMAGES" style="width:100px;height:100px;"/>
             }
         </td>
         <td>                           
