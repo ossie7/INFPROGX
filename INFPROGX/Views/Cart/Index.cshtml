@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@model INFPROGX.ViewModels.TotalProduct
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -8,6 +9,8 @@
 <body>
     <div>
         <h2>@ViewBag.Message</h2>
+        Totaal prijs @Html.DisplayFor(model => model.TotalPrice)
+        @Model.TotalPrice
     </div>
 </body>
 </html>

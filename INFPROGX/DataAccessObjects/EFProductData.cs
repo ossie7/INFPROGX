@@ -14,5 +14,15 @@ namespace INFPROGX.DataAccessObjects
         {
             return db.Product.Find(productId).Price;
         }
+
+        public IEnumerable<AbstractProduct> getAllProducts<AbstractProduct>()
+        {
+            return db.Product.ToList().OfType<AbstractProduct>();
+        }
+
+        public AbstractProduct getProductById(int id)
+        {
+            return db.Product.Find(id);
+        }
     }
 }

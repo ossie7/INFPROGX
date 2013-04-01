@@ -6,19 +6,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using INFPROGX.Models;
+using INFPROGX.ServiceAccessObjects;
 
 namespace INFPROGX.Controllers
 {
     public class CaseController : Controller
     {
         private ShopDbContext db = new ShopDbContext();
-
+        ProductManager pm;
         //
         // GET: /Case/
 
         public ActionResult Index()
         {
-            return View(db.Product.ToList().OfType<Case>());
+            pm = new ProductManager();
+            return View(pm.findAllProducts<Case>());
         }
 
         //
@@ -26,7 +28,7 @@ namespace INFPROGX.Controllers
 
         public ActionResult Details(int id = 0)
         {
-            Case Case = (Case)db.Product.Find(id);
+            Case Case = (Case)pm.findProductById(id);
             if (Case == null)
             {
                 return HttpNotFound();
