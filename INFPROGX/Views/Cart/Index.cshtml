@@ -9,8 +9,16 @@
 <body>
     <div>
         <h2>@ViewBag.Message</h2>
-        Totaal prijs @Html.DisplayFor(model => model.TotalPrice)
-        @Model.TotalPrice
+        Uw bestelling:<br />
+        Case: @Model.Case.Name<br />
+        CPU: @Model.Cpu.Name<br />
+        Harddisk: @Model.Harddisk.Name<br />
+  
+
+        Totaal prijs: &euro;@Model.TotalPrice<br /><br />
+
+        @Html.ActionLink("Terug naar shop", "Index", "Home")<br />
+        @Html.ActionLink("Afrekenen", "Checkout", "Cart")
     </div>
 </body>
 </html>

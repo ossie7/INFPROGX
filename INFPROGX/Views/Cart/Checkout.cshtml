@@ -1,0 +1,18 @@
+﻿@model INFPROGX.Models.Order
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        THANK YOU, ORDER RECEIVED
+        @foreach(INFPROGX.Models.OrderLine ord in Model.OrderLines)
+        {
+            @ord.Product.Name;
+        }
+    </div>
+</body>
+</html>

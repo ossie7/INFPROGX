@@ -32,7 +32,8 @@
             </p>
             <p>
                 Current Total Price: @Html.DisplayFor(model => model.TotalPrice)<br /><br />
-                @Html.ActionLink("Afrekenen", "Index", "Cart", 1, null)<br />
+                
+                @Html.ActionLink("Afrekenen", "Index", "Cart", new { model = Model }, null)<br />
             </p>
         </div>
     </section>
