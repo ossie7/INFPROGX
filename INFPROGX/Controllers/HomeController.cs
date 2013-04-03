@@ -7,6 +7,7 @@ using INFPROGX.ViewModels;
 using INFPROGX.Models;
 using INFPROGX.DataAccessObjects;
 using INFPROGX.ServiceAccessObjects;
+using System.Diagnostics;
 
 namespace INFPROGX.Controllers
 {
@@ -14,6 +15,7 @@ namespace INFPROGX.Controllers
     {
         private ShopDbContext db = new ShopDbContext();
         private IProductData productDao = new EFProductData();
+        OrderManager om;
 
         public ActionResult Index()
         {
@@ -65,6 +67,25 @@ namespace INFPROGX.Controllers
         {
             ViewBag.Message = "Your contact page.";
             return View();
+        }
+
+        public ActionResult ShowOrders()
+        {
+            ViewBag.Message = "All Orders";
+            om = new OrderManager();
+            
+            return View(om.findAllOrders<Order>());
+        }
+
+        public ActionResult Detail(int id)
+        {
+
+            Order order = (Order)db.Order.Find(id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+            return View(order);
         }
     }
 }

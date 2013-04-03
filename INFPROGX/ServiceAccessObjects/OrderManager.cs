@@ -7,17 +7,29 @@ using System.Web;
 
 namespace INFPROGX.ServiceAccessObjects
 {
-    public static class OrderManager
+    public class OrderManager
     {
+        static OrderData od;
+
+        public OrderManager()
+        {
+            od = new OrderData();
+        }
 
         public static Double GetTotalPrice()
         {
             throw new NotSupportedException();
         }
 
-        public static void SaveOrder(List<AbstractProduct> products)
+        public void SaveOrder(Order order)
         {
-            OrderData.CreateOrder(products);
+            od.CreateOrder(order);
         }
+
+        public IEnumerable<Order> findAllOrders<Order>()
+        {
+            return od.getAllOrders<Order>();
+        }
+
     }
 }

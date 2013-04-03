@@ -13,9 +13,7 @@ namespace INFPROGX.Models
         [Key]
         public int OrderId { get; set; }
 
-        public int UserId { get; set; }
-        [ForeignKey("UserId")]
-        public virtual UserProfile User { get; set; }
+        public string UserName { get; set; }
 
         public virtual ICollection<OrderLine> OrderLines { get; set; }
         public DateTime Date { get; set; }

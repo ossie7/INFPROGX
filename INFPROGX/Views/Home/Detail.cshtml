@@ -1,0 +1,20 @@
+﻿@model INFPROGX.Models.Order
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+     @Html.DisplayNameFor(model => model.OrderId)<br />
+        @Html.DisplayFor(model => model.Date)<br />
+        @Html.DisplayFor(model => model.UserName)<br />
+        @foreach(var item in Model.OrderLines)
+        {
+            @item.Product.Name; <br />
+        }
+    </div>
+</body>
+</html>
