@@ -24,7 +24,7 @@ namespace INFPROGX.Controllers
             {
                 model = (TotalProduct)Session["total"];
             }
-            ViewBag.Message = "Welkom!";
+            ViewBag.Message = "Welcome to the INPFROGX PCBUILDER!";
             
             //TODO: bereken totalprice
             model.TotalPrice = ProductManager.getTotalPrice(model.Products(), productDao);

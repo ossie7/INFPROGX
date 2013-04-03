@@ -53,6 +53,7 @@ namespace INFPROGX.Controllers
         {
             if (ModelState.IsValid)
             {
+                ram.Price = (float)Math.Round(ram.Price / 100, 2);
                 db.Product.Add(ram);
                 db.SaveChanges();
                 return RedirectToAction("Index");
