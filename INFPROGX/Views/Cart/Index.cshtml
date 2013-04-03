@@ -8,13 +8,16 @@
 </head>
 <body>
     <div>
-        <h2>@ViewBag.Message</h2>
-        Uw bestelling:<br />
+        <h2>@ViewBag.Message</h2><br>
+        <b>Uw bestelling:</b><br />
+        <p>
         Case: @Model.Case.Name<br />
         CPU: @Model.Cpu.Name<br />
         Harddisk: @Model.Harddisk.Name<br />
-  
-
+        Mobo: @Model.Mobo.Name<br />
+        Power supply: @Model.PowerSupply.Name<br />
+        RAM: @Model.Ram.Name<br />
+        </p>
         Totaal prijs: &euro;@Model.TotalPrice<br /><br />
 
         @Html.ActionLink("Terug naar shop", "Index", "Home")<br />

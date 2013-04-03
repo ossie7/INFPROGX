@@ -21,6 +21,8 @@ namespace INFPROGX.Controllers
         // GET: /Cart/
         OrderManager om;
 
+        private ShopDbContext db = new ShopDbContext();
+
         public ActionResult Index()
         {
             TotalProduct model = (TotalProduct)Session["total"];
@@ -33,7 +35,6 @@ namespace INFPROGX.Controllers
         public ActionResult Checkout()
         {
             TotalProduct model = (TotalProduct)Session["total"];
-            Debug.WriteLine(model.Products());
             List<AbstractProduct> products = model.Products();
             Order order = new Order();
             order.OrderLines = new List<OrderLine>();
@@ -42,7 +43,7 @@ namespace INFPROGX.Controllers
                 Debug.WriteLine(product.Name);
                 om = new OrderManager();
                 OrderLine ol = new OrderLine();
-                ol.Product = product;
+                ol.ProductId = product.ProductId;
                
                 order.OrderLines.Add(ol);
             }

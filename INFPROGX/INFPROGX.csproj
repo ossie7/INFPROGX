@@ -413,9 +413,6 @@
     <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Ram\Copy of Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>

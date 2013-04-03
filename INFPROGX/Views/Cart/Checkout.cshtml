@@ -8,11 +8,11 @@
 </head>
 <body>
     <div>
-        THANK YOU, ORDER RECEIVED
-        @foreach(INFPROGX.Models.OrderLine ord in Model.OrderLines)
+        THANK YOU, YOUR ORDER WITH ORDERNUMBER @(Model.OrderId) IS RECEIVED<br />
+        <!--@foreach(INFPROGX.Models.OrderLine ord in Model.OrderLines)
         {
-            @ord.Product.Name;
-        }
+            @ord.ProductId;
+        }-->
     </div>
 </body>
 </html>
