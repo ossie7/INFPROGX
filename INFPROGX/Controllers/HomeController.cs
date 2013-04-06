@@ -8,6 +8,8 @@ using INFPROGX.Models;
 using INFPROGX.DataAccessObjects;
 using INFPROGX.ServiceAccessObjects;
 using System.Diagnostics;
+using WebMatrix.WebData;
+
 
 namespace INFPROGX.Controllers
 {
@@ -75,6 +77,41 @@ namespace INFPROGX.Controllers
             om = new OrderManager();
             
             return View(om.findAllOrders<Order>());
+        }
+
+        public ActionResult ShowOrderProd()
+        {
+            string currentuser = User.Identity.Name;
+
+            var pre = (from hw in db.Order
+                       where hw.UserName == currentuser
+                       select new { OrderId = hw.OrderId }).ToList();
+            
+            System.Diagnostics.Debug.WriteLine(currentuser);
+           /* var hoi = from h in db.OrderData
+                      join hw in db.Order
+                          on h.OrderId equals hw.OrderId
+                     // where hw.UserName == currentuser
+                       select new OrderLine {OrderDataId = h.OrderDataId,
+                                OrderId = h.OrderId,
+                                ProductId = h.ProductId,
+                                PriceOnOrder = h.PriceOnOrder,
+                                    Amount = h.Amount}; */
+
+            var hoi = from h in db.OrderData
+                      join hw in db.Order
+                          on h.OrderId equals hw.OrderId
+                      select new OrderLine
+                      {
+                          OrderDataId = h.OrderDataId,
+                          OrderId = h.OrderId,
+                          ProductId = h.ProductId,
+                          PriceOnOrder = h.PriceOnOrder,
+                          Amount = h.Amount
+                      };
+
+          //  var b = db.Order.Include(e => e.OrderLines);
+            return View(hoi.ToList());
         }
 
         public ActionResult Detail(int id)

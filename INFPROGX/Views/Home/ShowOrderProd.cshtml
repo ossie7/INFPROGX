@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "ShowOrderProd";
+}
+@model List<INFPROGX.Models.OrderLine>
+<h2>ShowOrderProd</h2>
+<h2>@ViewBag.Message</h2>
+@foreach(var h in Model){
+    @Html.DisplayFor(mod => h.ProductId )
+}
