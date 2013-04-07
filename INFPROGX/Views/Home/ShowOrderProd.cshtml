@@ -5,6 +5,8 @@
 <h2>ShowOrderProd</h2>
 <h2>@ViewBag.Message</h2>
 @foreach(var item in Model){
-    Html.Raw("Html.DisplayFor(mod => OrderData.ProductId )");
-   @item.OrderData.ProductId <br />
+    <h4>You bought:</h4>
+
+   @item.OrderData.ProductId 
+    @item.Product.Name <br />
 }

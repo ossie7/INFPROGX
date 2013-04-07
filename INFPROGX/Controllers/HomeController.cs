@@ -83,42 +83,14 @@ namespace INFPROGX.Controllers
         {
             string currentuser = User.Identity.Name;
 
-            var pre = (from hw in db.Order
-                       where hw.UserName == currentuser
-                       select new { OrderId = hw.OrderId }).ToList();
-            
-            System.Diagnostics.Debug.WriteLine(currentuser);
-           /* var hoi = from h in db.OrderData
-                      join hw in db.Order
-                          on h.OrderId equals hw.OrderId
-                     // where hw.UserName == currentuser
-                       select new OrderLine {OrderDataId = h.OrderDataId,
-                                OrderId = h.OrderId,
-                                ProductId = h.ProductId,
-                                PriceOnOrder = h.PriceOnOrder,
-                                    Amount = h.Amount}; */
-            /*
-             *             var hoi = from h in db.OrderData
-                      join hw in db.Order
-                          on h.OrderId equals hw.OrderId
-                      select new OrderLine
-                      {
-                          OrderDataId = h.OrderDataId,
-                          OrderId = h.OrderId,
-                          ProductId = h.ProductId,
-                          PriceOnOrder = h.PriceOnOrder,
-                          Amount = h.Amount
-                      };
-             * */
+            var Linq = (from OrData in db.OrderData
+                      join or in db.Order
+                          on OrData.OrderId equals or.OrderId
+                       where or.UserName == currentuser
+                          join prod in db.Product on OrData.ProductId equals prod.ProductId
+                            select new ViewModel { OrderData = OrData, Order = or, Product = prod});
 
-            var hoi = (from h in db.OrderData
-                      join hw in db.Order
-                          on h.OrderId equals hw.OrderId
-                          where hw.UserName == currentuser
-                       select new ViewModel { OrderData = h, Order = hw });
-
-          //  var b = db.Order.Include(e => e.OrderLines);
-            return View(hoi);
+            return View(Linq);
         }
 
         public ActionResult Detail(int id)
