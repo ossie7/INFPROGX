@@ -97,8 +97,8 @@ namespace INFPROGX.Controllers
                                 ProductId = h.ProductId,
                                 PriceOnOrder = h.PriceOnOrder,
                                     Amount = h.Amount}; */
-
-            var hoi = from h in db.OrderData
+            /*
+             *             var hoi = from h in db.OrderData
                       join hw in db.Order
                           on h.OrderId equals hw.OrderId
                       select new OrderLine
@@ -109,9 +109,16 @@ namespace INFPROGX.Controllers
                           PriceOnOrder = h.PriceOnOrder,
                           Amount = h.Amount
                       };
+             * */
+
+            var hoi = (from h in db.OrderData
+                      join hw in db.Order
+                          on h.OrderId equals hw.OrderId
+                          where hw.UserName == currentuser
+                       select new ViewModel { OrderData = h, Order = hw });
 
           //  var b = db.Order.Include(e => e.OrderLines);
-            return View(hoi.ToList());
+            return View(hoi);
         }
 
         public ActionResult Detail(int id)

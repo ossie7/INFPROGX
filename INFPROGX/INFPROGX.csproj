@@ -194,6 +194,7 @@
     <Compile Include="Models\PowerSupply.cs" />
     <Compile Include="Models\Shipping.cs" />
     <Compile Include="Models\StoreDbInitializer.cs" />
+    <Compile Include="Models\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccessObjects\OrderManager.cs" />
     <Compile Include="ServiceAccessObjects\ProductManager.cs" />
