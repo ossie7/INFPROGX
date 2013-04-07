@@ -7,24 +7,23 @@ using System.Web;
 using System.Web.Mvc;
 using INFPROGX.Models;
 using INFPROGX.ServiceAccessObjects;
+using INFPROGX.DataAccessObjects;
 
 namespace INFPROGX.Controllers
 {
     public class CaseController : Controller
     {
         private ShopDbContext db = new ShopDbContext();
+        private IProductData pd = new EFProductData();
         ProductManager pm;
-        //
-        // GET: /Case/
+
 
         public ActionResult Index()
         {
-            pm = new ProductManager();
+            pm = new ProductManager(pd);
             return View(pm.findAllProducts<Case>());
         }
 
-        //
-        // GET: /Case/Details/5
 
         public ActionResult Details(int id = 0)
         {
@@ -36,16 +35,13 @@ namespace INFPROGX.Controllers
             return View(Case);
         }
 
-        //
-        // GET: /Case/Create
+
         [Authorize(Roles = "admin")]
         public ActionResult Create()
         {
             return View();
         }
 
-        //
-        // POST: /Case/Create
 
         [HttpPost]
         [Authorize(Roles = "admin")]
@@ -61,8 +57,7 @@ namespace INFPROGX.Controllers
             return View(Case);
         }
 
-        //
-        // GET: /Case/Edit/5
+
         [Authorize(Roles = "admin")]
         public ActionResult Edit(int id = 0)
         {
@@ -74,8 +69,6 @@ namespace INFPROGX.Controllers
             return View(Case);
         }
 
-        //
-        // POST: /Case/Edit/5
 
         [HttpPost]
         [Authorize(Roles = "admin")]
@@ -90,8 +83,7 @@ namespace INFPROGX.Controllers
             return View(Case);
         }
 
-        //
-        // GET: /Case/Delete/5
+
         [Authorize(Roles = "admin")]
         public ActionResult Delete(int id = 0)
         {
@@ -103,8 +95,6 @@ namespace INFPROGX.Controllers
             return View(Case);
         }
 
-        //
-        // POST: /Case/Delete/5
 
         [HttpPost, ActionName("Delete")]
         [Authorize(Roles = "admin")]

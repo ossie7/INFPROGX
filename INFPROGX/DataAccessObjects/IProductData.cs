@@ -9,5 +9,7 @@ namespace INFPROGX.DataAccessObjects
     public interface IProductData
     {
         float getPriceById(int productId);
+        IEnumerable<AbstractProduct> getAllProducts<AbstractProduct>();
+        AbstractProduct getProductById(int id);
     }
 }

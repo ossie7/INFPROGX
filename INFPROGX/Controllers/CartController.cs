@@ -54,6 +54,7 @@ namespace INFPROGX.Controllers
             {
                 om.SaveOrder(order);
             }
+            Session["total"] = new TotalProduct();
             return View(order);
         }
     }

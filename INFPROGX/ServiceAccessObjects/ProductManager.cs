@@ -9,20 +9,20 @@ namespace INFPROGX.ServiceAccessObjects
 {
     public class ProductManager
     {
-        EFProductData pd;
+        IProductData pd;
 
-        public ProductManager()
+        public ProductManager(IProductData pd)
         {
-            pd = new EFProductData();
+            this.pd = pd;
         }
 
-        public static float getTotalPrice(ICollection<AbstractProduct> products, IProductData DAO)
+        public float getTotalPrice(ICollection<AbstractProduct> products)
         {
             float total = 0.0f;
             if (products.Count < 1) return total;
             foreach(AbstractProduct product in products)
             {
-                total += DAO.getPriceById(product.ProductId);
+                total += pd.getPriceById(product.ProductId);
             }
             return total;
         }

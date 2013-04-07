@@ -27,9 +27,9 @@ namespace INFPROGX.Controllers
                 model = (TotalProduct)Session["total"];
             }
             ViewBag.Message = "Welcome to the INPFROGX PCBUILDER!";
-            
-            //TODO: bereken totalprice
-            model.TotalPrice = ProductManager.getTotalPrice(model.Products(), productDao);
+
+            ProductManager pm = new ProductManager(productDao);
+            model.TotalPrice = pm.getTotalPrice(model.Products());
             return View(model);
         }
 
@@ -82,23 +82,6 @@ namespace INFPROGX.Controllers
         public ActionResult ShowOrderProd()
         {
             string currentuser = User.Identity.Name;
-
-            /* var result = from p in Products                         
-                group p by p.SomeId into pg                         
-                join bp in BaseProducts on pg.FirstOrDefault().BaseProductId equals bp.Id         
-                select new ProductPriceMinMax { 
-                    SomeId = pg.FirstOrDefault().SomeId, 
-                    CountryCode = pg.FirstOrDefault().CountryCode, 
-                    MinPrice = pg.Min(m => m.Price), 
-                    MaxPrice = pg.Max(m => m.Price),
-                    BaseProductName = bp.Name  // now there is a 'bp' in scope
-                }; */
-
-            /*var Linq = (from OrData in db.OrderData
-                        join or in db.Order on OrData.OrderId equals or.OrderId
-                        where or.UserName == currentuser
-                        join prod in db.Product on OrData.ProductId equals prod.ProductId
-                        select new ViewModel { OrderData = OrData, Order = or, Product = prod });*/
 
             var Linq = (from od in db.OrderData
                         group od by od.ProductId into op
