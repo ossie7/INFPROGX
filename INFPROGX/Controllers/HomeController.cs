@@ -83,12 +83,29 @@ namespace INFPROGX.Controllers
         {
             string currentuser = User.Identity.Name;
 
-            var Linq = (from OrData in db.OrderData
-                      join or in db.Order
-                          on OrData.OrderId equals or.OrderId
-                       where or.UserName == currentuser
-                          join prod in db.Product on OrData.ProductId equals prod.ProductId
-                            select new ViewModel { OrderData = OrData, Order = or, Product = prod});
+            /* var result = from p in Products                         
+                group p by p.SomeId into pg                         
+                join bp in BaseProducts on pg.FirstOrDefault().BaseProductId equals bp.Id         
+                select new ProductPriceMinMax { 
+                    SomeId = pg.FirstOrDefault().SomeId, 
+                    CountryCode = pg.FirstOrDefault().CountryCode, 
+                    MinPrice = pg.Min(m => m.Price), 
+                    MaxPrice = pg.Max(m => m.Price),
+                    BaseProductName = bp.Name  // now there is a 'bp' in scope
+                }; */
+
+            /*var Linq = (from OrData in db.OrderData
+                        join or in db.Order on OrData.OrderId equals or.OrderId
+                        where or.UserName == currentuser
+                        join prod in db.Product on OrData.ProductId equals prod.ProductId
+                        select new ViewModel { OrderData = OrData, Order = or, Product = prod });*/
+
+            var Linq = (from od in db.OrderData
+                        group od by od.ProductId into op
+                        join o in db.Order on op.FirstOrDefault().OrderId equals o.OrderId
+                        where o.UserName == currentuser
+                        join p in db.Product on op.FirstOrDefault().ProductId equals p.ProductId
+                        select new ProductCount { Product = p, Count = op.Count() });
 
             return View(Linq);
         }

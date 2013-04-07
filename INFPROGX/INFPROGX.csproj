@@ -198,6 +198,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceAccessObjects\OrderManager.cs" />
     <Compile Include="ServiceAccessObjects\ProductManager.cs" />
+    <Compile Include="ViewModels\ProductCount.cs" />
     <Compile Include="ViewModels\TotalProduct.cs" />
   </ItemGroup>
   <ItemGroup>

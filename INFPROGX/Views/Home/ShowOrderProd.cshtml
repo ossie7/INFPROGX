@@ -1,12 +1,12 @@
 ﻿@{
     ViewBag.Title = "ShowOrderProd";
 }
-@model IEnumerable<INFPROGX.Models.ViewModel>
+@model IEnumerable<INFPROGX.ViewModels.ProductCount>
 <h2>ShowOrderProd</h2>
 <h2>@ViewBag.Message</h2>
+<h4>You bought:</h4>
 @foreach(var item in Model){
-    <h4>You bought:</h4>
-
-   @item.OrderData.ProductId 
-    @item.Product.Name <br />
+    @item.Product.Name
+    @Html.Raw(" x")
+    @item.Count <br />
 }
