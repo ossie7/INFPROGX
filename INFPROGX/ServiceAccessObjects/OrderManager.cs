@@ -1,9 +1,11 @@
 ﻿using INFPROGX.DataAccessObjects;
 using INFPROGX.Models;
+using INFPROGX.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace INFPROGX.ServiceAccessObjects
 {
@@ -29,6 +31,11 @@ namespace INFPROGX.ServiceAccessObjects
         public IEnumerable<Order> findAllOrders<Order>()
         {
             return od.getAllOrders<Order>();
+        }
+
+        public IQueryable<ProductCount> ShowOrderProd(string name)
+        {
+            return od.ShowOrderProd(name);
         }
 
     }

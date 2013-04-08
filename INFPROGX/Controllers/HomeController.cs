@@ -81,16 +81,8 @@ namespace INFPROGX.Controllers
 
         public ActionResult ShowOrderProd()
         {
-            string currentuser = User.Identity.Name;
-
-            var Linq = (from od in db.OrderData
-                        group od by od.ProductId into op
-                        join o in db.Order on op.FirstOrDefault().OrderId equals o.OrderId
-                        where o.UserName == currentuser
-                        join p in db.Product on op.FirstOrDefault().ProductId equals p.ProductId
-                        select new ProductCount { Product = p, Count = op.Count() });
-
-            return View(Linq);
+            om = new OrderManager();
+            return View(om.ShowOrderProd(User.Identity.Name));
         }
 
         public ActionResult Detail(int id)
